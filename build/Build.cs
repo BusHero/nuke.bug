@@ -1,7 +1,6 @@
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Tools.GitVersion;
-using Serilog;
 
 [GitHubActions(
 	"continous",
@@ -17,5 +16,5 @@ class Build : NukeBuild
 	readonly GitVersion GitVersion;
 
 	Target Print => _ => _
-		.Executes(() => Log.Information("GitVersion = {Version}", GitVersion.MajorMinorPatch));
+		.Executes(() => Logger.Info("GitVersion = {Version}", GitVersion.MajorMinorPatch));
 }
