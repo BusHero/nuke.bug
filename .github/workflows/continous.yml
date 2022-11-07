@@ -19,10 +19,10 @@ name: continous
 on: [push, workflow_dispatch]
 
 jobs:
-  ubuntu-latest:
+  GitVersion:
     strategy:
       matrix:
-        os: [ubuntu-latest, widows-latest]
+        os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v1
