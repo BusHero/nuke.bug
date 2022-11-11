@@ -20,6 +20,7 @@ on: [push, workflow_dispatch]
 
 jobs:
   Checkout1:
+    continue-on-error: true
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -32,6 +33,7 @@ jobs:
       - name: Run './build.cmd Print'
         run: dotnet run --project build
   Checkout2:
+    continue-on-error: true
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -44,6 +46,7 @@ jobs:
       - name: Run './build.cmd Print'
         run: dotnet run --project build
   Checkout3:
+    continue-on-error: true
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
