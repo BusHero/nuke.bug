@@ -22,11 +22,34 @@ jobs:
   Checkout1:
     strategy:
       matrix:
-        chekout-version: [1, 2, 3]
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v${{ chekout-version }}
+      - uses: actions/checkout@v1
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "6.0.x"
+      - name: Run './build.cmd Print'
+        run: dotnet run --project build
+  Checkout2:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "6.0.x"
+      - name: Run './build.cmd Print'
+        run: dotnet run --project build
+  Checkout3:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "6.0.x"
